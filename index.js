@@ -3,7 +3,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 
 
-const connectDB = require("./config/connection");
+require("./config/connection");
 const User = require("./routes/UserRouter");
 
 const server = express();
@@ -12,8 +12,7 @@ const server = express();
 server.use(cors({ origin: "*" }));
 server.use(bodyParser.json());
 
-// CONNECT DATABASE FIRST
-connectDB();
+
 
 // Routes
 server.use("/users", User);
