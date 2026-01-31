@@ -1,23 +1,29 @@
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+require("dotenv").config();
 
-const express = require("express")
-const cors = require("cors")
-const bodyParser = require("body-parser")
+const connectDB = require("./config/connection");
+const User = require("./routes/UserRouter");
 
-const server = express()
-const User = require("./routes/UserRouter")
-require("./config/connection")
+const server = express();
 
-server.use(cors(origin =  "*"))
-server.use(bodyParser.json())
+// Middleware
+server.use(cors({ origin: "*" }));
+server.use(bodyParser.json());
 
-server.use("/users" ,  User)
+// CONNECT DATABASE FIRST
+connectDB();
 
-server.get("/" , (req,res)=>{
-    res.send("hello")
-})
+// Routes
+server.use("/users", User);
 
-const port = 5000
+server.get("/", (req, res) => {
+  res.send("hello");
+});
 
-server.listen(port , (req,res)=>{
-       console.log("Server Started")
-})
+const port = 5000;
+
+server.listen(port, () => {
+  console.log(`Server Started on port ${port}`);
+});
