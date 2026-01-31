@@ -2,9 +2,10 @@
 const express = require("express")
 const cors = require("cors")
 const bodyParser = require("body-parser")
-require("./config/connection")
+
 const server = express()
 const User = require("./routes/UserRouter")
+require("./config/connection")
 
 server.use(cors(origin =  "*"))
 server.use(bodyParser.json())
