@@ -1,3 +1,5 @@
+
+
 const express = require("express")
 const cors = require("cors")
 const bodyParser = require("body-parser")
@@ -10,7 +12,9 @@ server.use(bodyParser.json())
 
 server.use("/users" ,  User)
 
-
+server.get("/" , (req,res)=>{
+    res.send("hello")
+})
 
 const port = 5000
 
