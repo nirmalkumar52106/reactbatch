@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 
 require("./config/connection");
 const User = require("./routes/UserRouter");
-
+const router = express.Router()
 const server = express();
 
 // Middleware
